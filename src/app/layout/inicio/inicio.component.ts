@@ -1,16 +1,16 @@
 import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
-import { LayoutService } from "./service/app.layout.service";
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { HeaderComponent } from '../header/header.component';
+import { LayoutService } from '../service/app.layout.service';
 
 @Component({
-    selector: 'app-layout',
-    templateUrl: './app.layout.component.html'
+  selector: 'app-inicio',
+  templateUrl: './inicio.component.html',
+  styleUrls: ['./inicio.component.scss']
 })
-export class AppLayoutComponent implements OnDestroy {
-
+export class InicioComponent {
     overlayMenuOpenSubscription: Subscription;
 
     menuOutsideClickListener: any;

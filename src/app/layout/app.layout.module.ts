@@ -12,21 +12,21 @@ import { RippleModule } from 'primeng/ripple';
 import { AppMenuitemComponent } from './app.menuitem.component';
 import { RouterModule } from '@angular/router';
 import { AppConfigModule } from './config/config.module';
-import { AppLayoutComponent } from "./app.layout.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
     declarations: [
         AppMenuitemComponent,
         FooterComponent,
-        AppLayoutComponent,
         NavbarComponent,
         FooterComponent,
         HeaderComponent,
         SidebarComponent,
+        InicioComponent,
     ],
     imports: [
         BrowserModule,
@@ -42,6 +42,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
         RouterModule,
         AppConfigModule
     ],
-    exports: [AppLayoutComponent]
+    exports: [InicioComponent]
 })
 export class AppLayoutModule { }

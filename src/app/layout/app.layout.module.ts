@@ -12,18 +12,18 @@ import { RippleModule } from 'primeng/ripple';
 import { AppMenuitemComponent } from './app.menuitem.component';
 import { RouterModule } from '@angular/router';
 import { AppConfigModule } from './config/config.module';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { InicioComponent } from './inicio/inicio.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+
 
 @NgModule({
     declarations: [
         AppMenuitemComponent,
         FooterComponent,
         NavbarComponent,
-        FooterComponent,
         HeaderComponent,
         SidebarComponent,
         InicioComponent,

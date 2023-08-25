@@ -2,8 +2,8 @@ import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { LayoutService } from "./service/app.layout.service";
-import { AppSidebarComponent } from "./app.sidebar.component";
 import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
     selector: 'app-layout',
@@ -17,7 +17,7 @@ export class AppLayoutComponent implements OnDestroy {
 
     profileMenuOutsideClickListener: any;
 
-    @ViewChild(AppSidebarComponent) appSidebar!: AppSidebarComponent;
+    @ViewChild(SidebarComponent) appSidebar!: SidebarComponent;
 
     @ViewChild(HeaderComponent) appTopbar!:HeaderComponent;
 

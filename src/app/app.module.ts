@@ -10,7 +10,7 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
-import { AppLayoutModule } from './layout/app.layout.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
     declarations: [
@@ -18,7 +18,7 @@ import { AppLayoutModule } from './layout/app.layout.module';
     ],
     imports: [
         AppRoutingModule,
-        AppLayoutModule
+        HomeModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

@@ -44,4 +44,4 @@ import { InicioComponent } from './components/inicio/inicio.component';
     ],
     exports: [InicioComponent]
 })
-export class AppLayoutModule { }
+export class HomeModule { }

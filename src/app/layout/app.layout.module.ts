@@ -11,22 +11,22 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { RippleModule } from 'primeng/ripple';
 import { AppMenuitemComponent } from './app.menuitem.component';
 import { RouterModule } from '@angular/router';
-import { AppTopBarComponent } from './app.topbar.component';
 import { AppConfigModule } from './config/config.module';
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
     declarations: [
         AppMenuitemComponent,
-        AppTopBarComponent,
         FooterComponent,
         AppSidebarComponent,
         AppLayoutComponent,
         NavbarComponent,
         FooterComponent,
+        HeaderComponent,
     ],
     imports: [
         BrowserModule,

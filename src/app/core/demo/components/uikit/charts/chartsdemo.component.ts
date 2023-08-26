@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { LayoutService } from 'src/app/core/home/service/app.layout.service';
+import { LayoutService } from 'src/app/shared/service/sakai-layout/sakai.layout.service';
 
 @Component({
     templateUrl: './chartsdemo.component.html'

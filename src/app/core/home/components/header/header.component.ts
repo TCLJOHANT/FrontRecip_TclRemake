@@ -1,7 +1,7 @@
 
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { LayoutService } from '../../service/app.layout.service';
+import { LayoutService } from 'src/app/shared/service/sakai-layout/sakai.layout.service';
 
 @Component({
   selector: 'app-header',

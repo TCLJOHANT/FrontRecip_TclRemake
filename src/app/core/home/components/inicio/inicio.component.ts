@@ -3,7 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { HeaderComponent } from '../header/header.component';
-import { LayoutService } from '../../service/app.layout.service';
+import { LayoutService } from 'src/app/shared/service/sakai-layout/sakai.layout.service';
 
 
 @Component({

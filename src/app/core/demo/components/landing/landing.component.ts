@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LayoutService } from 'src/app/core/home/service/app.layout.service';
+import { LayoutService } from 'src/app/shared/service/sakai-layout/sakai.layout.service';
 
 @Component({
     selector: 'app-landing',

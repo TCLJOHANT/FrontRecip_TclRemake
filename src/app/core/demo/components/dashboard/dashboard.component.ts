@@ -3,7 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { Product } from '../../api/product';
 import { ProductService } from '../../service/product.service';
 import { Subscription } from 'rxjs';
-import { LayoutService } from 'src/app/shared/service/sakai-layout/sakai.layout.service';
+import { LayoutService } from 'src/app/shared/service/sakai-layout/layout/sakai.layout.service';
 
 @Component({
     templateUrl: './dashboard.component.html',

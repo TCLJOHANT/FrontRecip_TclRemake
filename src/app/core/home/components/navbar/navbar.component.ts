@@ -1,6 +1,6 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
-import { LayoutService } from 'src/app/shared/service/sakai-layout/sakai.layout.service';
+import { LayoutService } from 'src/app/shared/service/sakai-layout/layout/sakai.layout.service';
 
 
 @Component({

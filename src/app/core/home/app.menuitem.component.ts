@@ -3,8 +3,8 @@ import { NavigationEnd, Router } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { MenuService } from 'src/app/shared/service/sakai-layout/app.menu.service';
-import { LayoutService } from 'src/app/shared/service/sakai-layout/sakai.layout.service';
+import { MenuService } from 'src/app/shared/service/sakai-layout/layout/app.menu.service';
+import { LayoutService } from 'src/app/shared/service/sakai-layout/layout/sakai.layout.service';
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector

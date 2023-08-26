@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../../api/product';
+import { Product } from 'src/app/shared/service/sakai-layout/demo/api/product';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
-import { ProductService } from '../../../service/product.service';
+import { ProductService } from 'src/app/shared/service/sakai-layout/demo/service/product.service';
 
 @Component({
     templateUrl: './crud.component.html',

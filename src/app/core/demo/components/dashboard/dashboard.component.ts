@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Product } from '../../api/product';
-import { ProductService } from '../../service/product.service';
+import { Product } from 'src/app/shared/service/sakai-layout/demo/api/product';
+import { ProductService } from 'src/app/shared/service/sakai-layout/demo/service/product.service';
 import { Subscription } from 'rxjs';
 import { LayoutService } from 'src/app/shared/service/sakai-layout/layout/sakai.layout.service';
 

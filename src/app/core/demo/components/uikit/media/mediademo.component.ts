@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../service/product.service';
-import { PhotoService } from '../../../service/photo.service';
-import { Product } from '../../../api/product';
+import { ProductService } from 'src/app/shared/service/sakai-layout/demo/service/product.service';
+import { PhotoService } from 'src/app/shared/service/sakai-layout/demo/service/photo.service';
+import { Product } from 'src/app/shared/service/sakai-layout/demo/api/product';
 
 @Component({
     templateUrl: './mediademo.component.html'

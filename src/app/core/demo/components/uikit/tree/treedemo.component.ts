@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NodeService } from '../../../service/node.service';
+import { NodeService } from 'src/app/shared/service/sakai-layout/demo/service/node.service';
 import { TreeNode} from 'primeng/api';
 
 @Component({

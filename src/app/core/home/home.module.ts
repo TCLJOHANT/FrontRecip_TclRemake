@@ -19,13 +19,16 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
-import { CountryService } from '../demo/service/country.service';
-import { CustomerService } from '../demo/service/customer.service';
-import { EventService } from '../demo/service/event.service';
-import { IconService } from '../demo/service/icon.service';
-import { NodeService } from '../demo/service/node.service';
-import { PhotoService } from '../demo/service/photo.service';
-import { ProductService } from '../demo/service/product.service';
+//de shared
+import { CountryService } from 'src/app/shared/service/sakai-layout/demo/service/country.service';
+import { CustomerService } from 'src/app/shared/service/sakai-layout/demo/service/customer.service';
+import { EventService } from 'src/app/shared/service/sakai-layout/demo/service/event.service';
+import { IconService } from 'src/app/shared/service/sakai-layout/demo/service/icon.service';
+import { NodeService } from 'src/app/shared/service/sakai-layout/demo/service/node.service';
+import { PhotoService } from 'src/app/shared/service/sakai-layout/demo/service/photo.service';
+import { ProductService } from 'src/app/shared/service/sakai-layout/demo/service/product.service';
+
+
 
 @NgModule({
     declarations: [

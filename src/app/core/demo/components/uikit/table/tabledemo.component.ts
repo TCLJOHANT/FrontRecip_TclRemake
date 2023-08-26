@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Customer, Representative } from '../../../api/customer';
-import { CustomerService } from '../../../service/customer.service';
-import { Product } from '../../../api/product';
-import { ProductService } from '../../../service/product.service';
+// import { Customer, Representative } from '../../../api/customer';
+import { Customer,Representative } from 'src/app/shared/service/sakai-layout/demo/api/customer';
+import { CustomerService } from 'src/app/shared/service/sakai-layout/demo/service/customer.service';
+import { Product } from 'src/app/shared/service/sakai-layout/demo/api/product';
+import { ProductService } from 'src/app/shared/service/sakai-layout/demo/service/product.service';
 import { Table } from 'primeng/table';
 import { MessageService, ConfirmationService } from 'primeng/api';
 

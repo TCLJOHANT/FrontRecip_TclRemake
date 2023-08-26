@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Product } from '../../../api/product';
-import { ProductService } from '../../../service/product.service';
+import { Product } from 'src/app/shared/service/sakai-layout/demo/api/product';
+import { ProductService } from 'src/app/shared/service/sakai-layout/demo/service/product.service';
 
 @Component({
     templateUrl: './overlaysdemo.component.html',

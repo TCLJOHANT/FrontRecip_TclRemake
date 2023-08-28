@@ -3,9 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { ComponentsRoutingModule } from './components-routing.module';
 
+import { NotFoundComponent } from './not-found/not-found.component';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    NotFoundComponent
+  ],
   imports: [
     CommonModule,
     ComponentsRoutingModule

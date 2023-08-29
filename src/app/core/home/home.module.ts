@@ -30,6 +30,7 @@ import { ProductService } from 'src/app/shared/service/sakai-layout/demo/service
 
 
 
+
 @NgModule({
     declarations: [
         AppMenuitemComponent,
@@ -52,7 +53,7 @@ import { ProductService } from 'src/app/shared/service/sakai-layout/demo/service
         InputSwitchModule,
         RippleModule,
         RouterModule,
-        AppConfigModule
+        AppConfigModule,
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

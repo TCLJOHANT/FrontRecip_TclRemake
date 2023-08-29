@@ -17,11 +17,14 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         this.model = [
             {
-                label: 'Home',
+                label: 'Incio',
                 items: [
-                    { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                    { label: 'Para ti', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+                    { label: 'Sigueindo', icon: 'pi pi-fw pi-id-card', routerLink: [''] },
                 ]
+                
             },
+            
             {
                 label: 'UI Components',
                 items: [

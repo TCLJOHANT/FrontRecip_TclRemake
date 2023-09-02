@@ -1,0 +1,146 @@
+import { HttpClient, HttpHeaders, HttpXsrfTokenExtractor, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthModel } from '../models/auth.model';
+import { EmpresaModel } from '../models/empresa.model';
+import { PersonaModel } from '../models/persona.model';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { ActivationCompanyUserModel } from '../models/activation-company-user.model';
+import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+
+const API_URL = environment.url;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CoreService {
+
+  // devuelve la URL base de la API,
+  getApiUrl(): string {
+    return environment.url;
+  }
+//variables son instancias   `Subject`  de RxJS, utilizadas para emitir
+// y suscribirse a eventos en diferentes partes de la aplicación.
+  public persona: Subject<PersonaModel> = new Subject<PersonaModel>;
+  public empresa: Subject<EmpresaModel> = new Subject<EmpresaModel>;
+  public permissions: Subject<string> = new Subject<string>;
+  public check: Subject<boolean> = new Subject<boolean>;
+  public Data = new Subject;
+  Data$ = this.Data.asObservable();
+  check$ = this.check.asObservable();
+
+  constructor(
+    private httpClient: HttpClient,
+    private _router: Router,
+    private _tokenService: HttpXsrfTokenExtractor,
+    private http: HttpClient
+  ) { }
+//realiza una solicitud HTTP GET a la API, utilizando la URL base de la API ( `API_URL` ) y el parámetro  `tabla` . Si  `dato`  está vacío, se realiza una solicitud a  `${API_URL}${tabla}` , de lo contrario, se realiza una solicitud a  `${API_URL}search/${tabla}/${dato}` .
+  public pass<T>( tabla: string, dato: string): Observable<T> {
+    if (dato == '') {
+      return this.http.get<T>(`${API_URL}${tabla}`);
+    }
+    else {
+      return this.http.get<T>(`${API_URL}search/${tabla}/${dato}`);
+    }
+  }
+
+  // realiza una solicitud HTTP GET a la API, utilizando la URL base de la API ( `API_URL` ), la URL específica ( `url` ) y los datos opcionales ( `data` ). Los datos se agregan a la URL utilizando el método privado  `getData()` .
+
+  public get<T>(url: String, data: string | Object = ''): Observable<T> {
+    return this.httpClient.get<T>(
+      API_URL + url + this.getData(data),
+      this.getConfig()
+    );
+  }
+// Este método devuelve la configuración de encabezados HTTP, que incluye el encabezado  `'Accept': 'application/json'`  y el token de seguridad obtenido a través de  `HttpXsrfTokenExtractor` .
+  private getConfig() {
+    const header = {
+      'Accept': 'application/json'
+    };
+    const token = this._tokenService.getToken();
+    return { withCredentials: true, headers: new HttpHeaders(header) };
+  }
+
+//Este método realiza una solicitud HTTP POST a la API, utilizando la URL base de la API ( `API_URL` ), la URL específica ( `url` ) y los datos opcionales ( `data` ). Los datos se envían en el cuerpo de la solicitud y se utiliza la configuración de encabezados obtenida a través de  `getConfig()` .
+  public post<T>(url: String, data: Object | FormData = {}): Observable<T> {
+    return this.httpClient.post<T>(
+      API_URL + url,
+      data,
+      this.getConfig()
+    );
+  }
+//realiza una solicitud HTTP PUT a la API, utilizando la URL base de la API ( `API_URL` ), la URL específica ( `url` ) y los datos opcionales ( `data` ). Los datos se envían en el cuerpo de la solicitud y se utiliza la configuración de encabezados obtenida a través de  `getConfig()` .
+  public put<T>(url: String, data: any = {}): Observable<T> {
+    if (typeof (data.append) === 'function') {
+      data.append('_method', 'PUT');
+    } else {
+      data._method = 'PUT';
+    }
+    return this.httpClient.post<T>(API_URL + url, data, this.getConfig());
+  }
+  //Este método realiza una solicitud HTTP DELETE a la API, utilizando la URL base de la API ( `API_URL` ), la URL específica ( `url` ) y la configuración de encabezados obtenida a través de  `getConfig()` .
+  public delete(url: String) {
+    return this.httpClient.delete(API_URL + url, this.getConfig());
+  }
+  //Este método realiza una solicitud HTTP GET para obtener un token CSRF, y luego realiza una solicitud HTTP POST para realizar el inicio de sesión del usuario utilizando las credenciales proporcionadas. Si la solicitud tiene éxito, se llama a la función  `success` , de lo contrario, se llama a la función  `error` .
+  login(user: string, password: string, success: CallableFunction, error: CallableFunction) {
+    this.httpClient.get(API_URL + 'sanctum/csrf-cookie').subscribe(res => {
+      this.post<ActivationCompanyUserModel[]>('login', {
+        email: user,
+        password: password
+      }).subscribe(response => {
+        success(response);
+      }, err => {
+        error(err);
+      });
+    });
+  }
+//Este método realiza una solicitud HTTP GET para obtener los datos del usuario autenticado. Si la solicitud tiene éxito, se actualizan los valores de  `persona` ,  `permissions`  y  `empresa`  utilizando los datos obtenidos. Si la solicitud falla, se llama a  `logout()`  y se establece  `check`  en  `false` .
+  public getUserAuthenticated() {
+    this.get<AuthModel>('user').subscribe(auth => {
+      this.persona.next(auth.user);
+      this.permissions.next(auth.permission);
+      this.empresa.next(auth.userActivate.company!);
+      this.check.next(true)
+    }, errs => {
+      this.logout();
+      this.check.next(false)
+    });
+  }
+//Este método realiza una solicitud HTTP POST para cerrar la sesión del usuario. Luego, se restablecen los valores de  `persona` ,  `empresa`  y  `permissions` , y se redirige al usuario a la página de inicio de sesión.
+  logout() {
+    this.persona.next(null!);
+    this.empresa.next(null!);
+    this.permissions.next('');
+
+    this.post('logout').subscribe(res => {
+      this._router.navigate(['/login']);
+    }, err => {
+      this._router.navigate(['/login']);
+    });
+  }
+// Este método es utilizado internamente para construir una URL de datos a partir de una cadena de texto o un objeto. Se utiliza en los métodos  `get()`  y  `pass()`  para agregar los datos a la URL de la solicitud.
+  private getData(data: String | Object): String {
+    let dataUrl = '?';
+    if (typeof (data) === 'string') {
+      if (data.trim() === '') {
+        return '';
+      }
+      dataUrl += data;
+    } else {
+      const keys = Object.keys(data);
+      keys.forEach((key, index) => {
+        if (index > 0) {
+          dataUrl += '&';
+        }
+        dataUrl += '${key}=${data[key]}';
+      });
+    }
+    return dataUrl.replace('??', '?').trim();
+  }
+
+  //`CoreService`  es un servicio que proporciona métodos para realizar solicitudes HTTP a una API, 
+  //manejar la autenticación de usuarios, obtener y almacenar datos relacionados con el usuario autenticado, y realizar operaciones CRUD básicas
+}

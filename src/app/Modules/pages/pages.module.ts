@@ -7,7 +7,7 @@ import { InicioViewComponent } from './inicio-view/inicio-view.component';
 
 @NgModule({
   declarations: [
-    InicioViewComponent
+    InicioViewComponent,
   ],
   imports: [
     CommonModule,

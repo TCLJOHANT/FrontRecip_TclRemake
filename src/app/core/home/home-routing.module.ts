@@ -7,6 +7,10 @@ import { InicioViewComponent } from 'src/app/Modules/pages/inicio-view/inicio-vi
 
 const routes: Routes = [
   {
+    path:'pruebaAdmin',
+    loadChildren: () => import('src/app/Modules/pages/admin-views/admin-views.module').then(m => m.AdminViewsModule)
+  },
+  {
     path:'',
     component:InicioComponent,
         children: [

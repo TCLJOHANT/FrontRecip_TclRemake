@@ -8,10 +8,9 @@ const API_URL = environment.url; //url del backend
   providedIn: 'root'
 })
 export class CoreService {
-
   constructor(private httpClient:HttpClient,private tokenService: HttpXsrfTokenExtractor) {}
   // Utiliza la propiedad 'url' del objeto 'environment' para obtener la URL base de la API
-  getApiUrl(): string {
+  getApiUrl():string {
     return environment.url;
   }
   //metodos http (GET,POST,PUT,DELETE)
